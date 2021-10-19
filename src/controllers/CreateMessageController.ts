@@ -1,12 +1,12 @@
 import { Request, Response } from 'express'
-import { CreateMessageService } from '../services/CreateMessageService'
+import { CreateMessageService } from '../services'
 
-export function CreateMessageController() {
-  async function handle(req: Request, res: Response) {
+class CreateMessageController {
+  async handle(req: Request, res: Response) {
     const { message } = req.body
     const { user_id } = req
 
-    const service = CreateMessageService()
+    const service = new CreateMessageService()
 
     try {
       const result = await service.execute(message, user_id)
@@ -15,6 +15,6 @@ export function CreateMessageController() {
       return res.json({ error: error.message })
     }
   }
-
-  return { handle }
 }
+
+export { CreateMessageController }

@@ -1,11 +1,11 @@
 import { Request, Response } from 'express'
-import { AuthUserService } from '../services/AuthUserService'
+import { AuthUserService } from '../services'
 
-export function AuthUserController() {
-  async function handle(req: Request, res: Response) {
+class AuthUserController {
+  async handle(req: Request, res: Response) {
     const { code } = req.body
 
-    const service = AuthUserService()
+    const service = new AuthUserService()
 
     try {
       const result = await service.execute(code)
@@ -14,6 +14,6 @@ export function AuthUserController() {
       return res.json({ error: error.message })
     }
   }
-
-  return { handle }
 }
+
+export { AuthUserController }

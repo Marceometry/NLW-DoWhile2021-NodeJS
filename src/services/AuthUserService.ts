@@ -13,8 +13,8 @@ interface UserResponse {
   id: number
 }
 
-export function AuthUserService() {
-  async function execute(code: string) {
+class AuthUserService {
+  async execute(code: string) {
     const url = 'https://github.com/login/oauth/access_token'
 
     const { data } = await axios.post<AccessTokenResponse>(url, null, {
@@ -71,6 +71,6 @@ export function AuthUserService() {
 
     return { token, user }
   }
-
-  return { execute }
 }
+
+export { AuthUserService }
