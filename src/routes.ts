@@ -9,6 +9,16 @@ import {
 
 const router = Router()
 
+router.get('/github', (req, res) => {
+  const URL = 'https://github.com/login/oauth/authorize?client_id='
+  res.redirect(URL + process.env.GITHUB_CLIENT_ID)
+})
+
+router.get('/signin/callback', (req, res) => {
+  const { code } = req.query
+  res.json(code)
+})
+
 router.post('/authenticate', new AuthUserController().handle)
 
 router.post(
