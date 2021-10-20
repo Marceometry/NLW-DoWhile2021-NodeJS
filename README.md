@@ -38,4 +38,4 @@ Backend do projeto DoWhile, feito durante a `NLW Heat` em Node.js.
 - Instale as dependências com `yarn`
 - Inicie o servidor com `yarn dev`
 
-Agora você pode acessar [`localhost:4000`](http://localhost:4000) do seu navegador.
+Agora seu servidor está rodando no [`localhost:4000`](http://localhost:4000).
